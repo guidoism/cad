@@ -37,21 +37,29 @@ difference() {
 
 difference() {
     move([0, 0, -3.1]) cube(size=[232, 160, 3.1]);
-    move([5, 5, -3.1]) hull() { keyholes(); }
+    move([5, 5, -3.1]) scale([1, 1.02, 1]) hull() { keyholes(); }
     move([12, 100, -3.1]) controller_hole_small();
     move([232/2, 100, -3.1]) cube(size=[30, 50, 10], center=true);
 }
 
 difference() {
     move([0, 0, -3.1*2]) cube(size=[232, 160, 3.1]);
-    move([5, 5, -3.1*2]) hull() { keyholes(); }
+    move([5, 5, -3.1*2]) scale([1, 1.02, 1]) hull() { keyholes(); }
     move([12, 100, -3.1*2]) controller_hole_small();
     move([232/2, 100, -3.1*2]) cube(size=[30, 50, 10 ], center=true);
+    move([25, 140, -3.1*2]) cube(size=[9, 50, 10]);
 }
 
 difference() {
     move([0, 0, -3.1*3]) cube(size=[232, 160, 3.1]);
-    move([5, 5, -3.1*3]) hull() { keyholes(); }
+    move([5, 5, -3.1*3]) scale([1, 1.02, 1]) hull() { keyholes(); }
     move([12, 100, -3.1*3]) controller_hole_small();
     move([232/2, 100, -3.1*3]) cube(size=[30, 50, 10 ], center=true);
+    move([25-20.5/2+9/2, 140, -3.1*2.5]) cube(size=[20.5, 50, 1.55]);
 }
+
+
+// move([0, 0, -3.1*4]) cube(size=[232, 160, 3.1]);
+
+
+
