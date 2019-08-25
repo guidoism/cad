@@ -67,7 +67,7 @@ module four() {
           move([5, 5]) scale([1, 1.02, 1]) hull() { keyholes(); }
           move([12, 100]) controller_hole_small();
           move([232/2, 100]) cube(size=[30, 50, 10 ], center=true);
-          move([25-20.5/2+9/2, 140, -t*2.5]) cube(size=[20.5, 50, 1.55]);
+          move([25-20.5/2+9/2, 140, +t/2]) cube(size=[20.5, 50, 1.55]);
      }
 }
 
