@@ -14,15 +14,15 @@ module keyholes() {
 
 module rounded_rectangle(w, h, c) {
      minkowski() {
-          move([c, c, -t]) cube([w-2*c, h-2*c, t*10]);
-          cylinder(t*10, c, center=true);
+          move([c, c]) cube([w-2*c, h-2*c, t]);
+          cylinder(h=t, r=c, center=true);
      }
 }
 
 module layer(n) {
      move([0, 0, -t*n]) {
           difference() {
-               cube(size=[232, 160, t]);
+               rounded_rectangle(232, 160, t);
                children();
           }
      }
