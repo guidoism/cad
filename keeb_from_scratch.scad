@@ -11,22 +11,12 @@ module keyholes() {
     grid2d(cols=12, rows=4, spacing=19, align=V_ALLPOS) cube([14, 14, 5]);
 }
 
-module controller_hole() {
-    hull() {
-        cylinder(h=10, r=7);
-        move([19*11, 0]) cylinder(h=10, r=7);
-        move([0, 40]) cylinder(h=10, r=7);
-        move([19*11, 40]) cylinder(h=10, r=7);
-    }
-}
 
-module controller_hole_small() {
-    hull() {
-        move([2, 2]) cylinder(h=10, r=7);
-        move([19*11-2, 2]) cylinder(h=10, r=7);
-        move([2, 40-2]) cylinder(h=10, r=7);
-        move([19*11-2, 40-2]) cylinder(h=10, r=7);
-    }
+module rounded_rectangle(w, h, c) {
+     minkowski() {
+          move([c, c, -t]) cube([w-2*c, h-2*c, t*10]);
+          cylinder(t*10, c, center=true);
+     }
 }
 
 module layer(n) {
@@ -41,14 +31,14 @@ module layer(n) {
 module one() {
      layer(0) {
           move([5, 5]) keyholes();
-          move([12, 100]) controller_hole();
+          move([12, 90]) rounded_rectangle(19*11, 60, 19/2);
      }
 }
 
 module two() {
      layer(1) {
           move([5, 5]) scale([1, 1.02, 1]) hull() { keyholes(); }
-          move([12, 100]) controller_hole_small();
+          move([12+3, 90+3]) rounded_rectangle(19*11-3*2, 60-3*2, 19/2-3);
           move([232/2, 100]) cube(size=[30, 50, 10], center=true);
      }
 }
@@ -56,7 +46,7 @@ module two() {
 module three() {
      layer(2) {
           move([5, 5]) scale([1, 1.02, 1]) hull() { keyholes(); }
-          move([12, 100]) controller_hole_small();
+          move([12+3, 90+3]) rounded_rectangle(19*11-3*2, 60-3*2, 19/2-3);
           move([232/2, 100]) cube(size=[30, 50, 10 ], center=true);
           move([25, 140]) cube(size=[9, 50, 10]);
      }
@@ -65,7 +55,7 @@ module three() {
 module four() {
      layer(3) {
           move([5, 5]) scale([1, 1.02, 1]) hull() { keyholes(); }
-          move([12, 100]) controller_hole_small();
+          move([12+3, 90+3]) rounded_rectangle(19*11-3*2, 60-3*2, 19/2-3);
           move([232/2, 100]) cube(size=[30, 50, 10 ], center=true);
           move([25-20.5/2+9/2, 140, +t/2]) cube(size=[20.5, 50, 1.55]);
      }
