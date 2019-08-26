@@ -1,7 +1,7 @@
 include <BOSL/constants.scad>
 use <BOSL/transforms.scad>
 
-svg = true;
+svg = false;
 
 projection() ymove(-15) grid2d(cols=24, rows=1, spacing=10, align=V_RIGHT) cube(size=[.2,5,1]);
 projection() ymove(-15) grid2d(cols=230, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
