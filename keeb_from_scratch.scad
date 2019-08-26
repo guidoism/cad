@@ -15,7 +15,6 @@ module keyholes() {
 module rounded_rectangle(w, h, c) {
      move([c, c]) minkowski() {
           cube([w-2*c, h-2*c, t/2]);
-          //cube([w, h, t/2]);
           cylinder(h=t/2, r=c);
      }
 }
