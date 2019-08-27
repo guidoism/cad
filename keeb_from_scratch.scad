@@ -6,7 +6,9 @@ svg = true;
 if (svg) {
      projection() {
           ymove(-15) grid2d(cols=24, rows=1, spacing=10, align=V_RIGHT) cube(size=[.2,5,1]);
-          ymove(-15) grid2d(cols=230, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+          ymove(-15) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+          xmove(100) ymove(-15) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+          xmove(200) ymove(-15) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
      }
 }
 
@@ -84,11 +86,16 @@ module five() {
      }
 }
 
+//
+// The actual keyboard I made was 1.5 mm bigger per 100 mm
+//
+
 // TODO: holes for screws on bottom
 // TODO: etch name in bottom
 // TODO: programmatically export svg
 // TODO: programmatically add real world units
 // TODO: close lid or bottom with magnets?
+// TODO: Engrave as seperate svg at the same time
 
 if (svg) {
      //projection() one();
