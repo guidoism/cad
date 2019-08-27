@@ -1,7 +1,7 @@
 include <BOSL/constants.scad>
 use <BOSL/transforms.scad>
 
-svg = false;
+svg = true;
 
 if (svg) {
      projection() {
