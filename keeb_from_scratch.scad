@@ -14,7 +14,15 @@ t = 3.1; // Thickness of each layer
 $fn = 50;
 
 module keyholes() {
-    grid2d(cols=12, rows=4, spacing=19, align=V_ALLPOS) cube([14, 14, 10]);
+    grid2d(cols=12, rows=4, spacing=19, align=V_ALLPOS) {
+         if ($col == 6 && $row == 0) {
+              // remove
+         } else if ($col == 5 && $row == 0) {
+              move([19/2, 0]) cube([14, 14, 10]);
+         } else {
+              cube([14, 14, 10]);
+         }
+    }
 }
 
 module rounded_rectangle(w, h, c) {
@@ -76,10 +84,10 @@ module five() {
      }
 }
 
-// TODO: 2u spacebar
 // TODO: holes for screws on bottom
 // TODO: etch name in bottom
 // TODO: programmatically export svg
+// TODO: programmatically add real world units
 // TODO: close lid or bottom with magnets?
 
 if (svg) {
@@ -96,7 +104,7 @@ if (svg) {
      five();
 }
 
-//move([200, 200]) keyholes();
+
 
 
 
