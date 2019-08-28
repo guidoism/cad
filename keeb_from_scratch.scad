@@ -3,18 +3,15 @@ use <BOSL/transforms.scad>
 
 svg = true;
 
-if (svg) {
-     projection() {
-          ymove(-10) grid2d(cols=24, rows=1, spacing=10, align=V_RIGHT) cube(size=[.2,5,1]);
-          ymove(-10) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
-          xmove(100) ymove(-10) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
-          xmove(200) ymove(-10) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
-          // Export as 508 mm x 304.8 mm
-          //
-          // The actual keyboard I made was 1.5 mm bigger per 100 mm
-          //
-          // TODO: Temporarily increase size to composate for fuck-up
-          move([508, 304.8-10]) cube(size=[.1, .1, .1]);
+module ruler() {
+     grid2d(cols=24, rows=1, spacing=10, align=V_RIGHT) cube(size=[.2,5,1]);
+     grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+     xmove(100) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+     xmove(200) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+
+     move([-0.5, -3]) for (i = [1:23]) {
+          //linear_extrude(10)
+          xmove(i*10) text(str(i), 2);
      }
 }
 
@@ -100,11 +97,22 @@ module five() {
 // TODO: Engrave as seperate svg at the same time
 
 if (svg) {
-     projection() one();
-     //projection() two();
-     //projection() three();
-     //projection() four();
-     //projection() five();
+     // The actual keyboard I made was 1.5 mm bigger per 100 mm
+     // Temporarily increase size to compensate for fuck-up
+     scale(101.5/100) {
+          color("blue") ymove(166) ruler();
+          projection() {
+               //one();
+               two();
+               //three();
+               //four();
+               //five();
+          }
+     }
+     // Export as 508 mm x 304.8 mm
+     move([508, 304.8-10]) cube(size=[.1, .1, .1]);
+     color("purple") ymove(180) ruler();
+
 } else {
      one();
      two();
