@@ -5,10 +5,13 @@ svg = true;
 
 if (svg) {
      projection() {
-          ymove(-15) grid2d(cols=24, rows=1, spacing=10, align=V_RIGHT) cube(size=[.2,5,1]);
-          ymove(-15) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
-          xmove(100) ymove(-15) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
-          xmove(200) ymove(-15) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+          ymove(-10) grid2d(cols=24, rows=1, spacing=10, align=V_RIGHT) cube(size=[.2,5,1]);
+          ymove(-10) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+          xmove(100) ymove(-10) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+          xmove(200) ymove(-10) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+          // Export as 508 mm x 304.8 mm
+          // TODO: Temporarily increase size to composate for fuck-up
+          move([508, 304.8-10]) cube(size=[.1, .1, .1]);
      }
 }
 
@@ -93,16 +96,16 @@ module five() {
 // TODO: holes for screws on bottom
 // TODO: etch name in bottom
 // TODO: programmatically export svg
-// TODO: programmatically add real world units
+// TODO: programmatically add real world units to svg
 // TODO: close lid or bottom with magnets?
 // TODO: Engrave as seperate svg at the same time
 
 if (svg) {
-     //projection() one();
+     projection() one();
      //projection() two();
      //projection() three();
      //projection() four();
-     projection() five();
+     //projection() five();
 } else {
      one();
      two();
