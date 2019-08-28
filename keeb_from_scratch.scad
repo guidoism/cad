@@ -10,6 +10,9 @@ if (svg) {
           xmove(100) ymove(-10) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
           xmove(200) ymove(-10) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
           // Export as 508 mm x 304.8 mm
+          //
+          // The actual keyboard I made was 1.5 mm bigger per 100 mm
+          //
           // TODO: Temporarily increase size to composate for fuck-up
           move([508, 304.8-10]) cube(size=[.1, .1, .1]);
      }
@@ -88,10 +91,6 @@ module five() {
           move([0, 81]) cube(size=[232, .1, t]);
      }
 }
-
-//
-// The actual keyboard I made was 1.5 mm bigger per 100 mm
-//
 
 // TODO: holes for screws on bottom
 // TODO: etch name in bottom
