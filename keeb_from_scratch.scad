@@ -3,14 +3,16 @@ use <BOSL/transforms.scad>
 
 svg = true;
 
-module ruler() {
+module tickmarks() {
      grid2d(cols=24, rows=1, spacing=10, align=V_RIGHT) cube(size=[.2,5,1]);
      grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
      xmove(100) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
      xmove(200) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+}
 
+module ruler() {
+     projection() tickmarks();
      move([-0.5, -3]) for (i = [1:23]) {
-          //linear_extrude(10)
           xmove(i*10) text(str(i), 2);
      }
 }
@@ -102,15 +104,15 @@ if (svg) {
      scale(101.5/100) {
           color("blue") ymove(166) ruler();
           projection() {
-               //one();
-               two();
+               one();
+               //two();
                //three();
                //four();
                //five();
           }
      }
      // Export as 508 mm x 304.8 mm
-     move([508, 304.8-10]) cube(size=[.1, .1, .1]);
+     projection() move([508, 304.8-10]) cube(size=[1, 1, 1]);
      color("purple") ymove(180) ruler();
 
 } else {
