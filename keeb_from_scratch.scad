@@ -5,9 +5,12 @@ svg = true;
 
 module tickmarks() {
      grid2d(cols=24, rows=1, spacing=10, align=V_RIGHT) cube(size=[.2,5,1]);
-     grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
-     xmove(100) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
-     xmove(200) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+     //grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+     //xmove(100) grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+     xmove(230) {
+          grid2d(cols=10, rows=1, spacing=1, align=V_RIGHT) cube(size=[.2,3,1]);
+          //move([5.48, -5]) grid2d(cols=1, rows=7, spacing=1, align=V_RIGHT) cube(size=[.2,.2,1]);
+     }
 }
 
 module ruler() {
@@ -98,29 +101,42 @@ module five() {
 // TODO: close lid or bottom with magnets?
 // TODO: Engrave as seperate svg at the same time
 
+module alignment_marks(x, y) {
+     th = .2;
+     ymove(y) xmove(x) cube(size=[10, th, 1]);
+     ymove(y) xmove(x) cube(size=[th, 10, 1]);
+     ymove(y) xflip() cube(size=[10, th, 1]);
+     ymove(y) xflip() cube(size=[th, 10, 1]);
+     yflip() xmove(x) cube(size=[10, th, 1]);
+     yflip() xmove(x) cube(size=[th, 10, 1]);
+     yflip() xflip() cube(size=[10, th, 1]);
+     yflip() xflip() cube(size=[th, 10, 1]);
+}
+
 if (svg) {
      // The actual keyboard I made was 1.5 mm bigger per 100 mm
      // Temporarily increase size to compensate for fuck-up
      scale(101.5/100) {
-          color("blue") ymove(166) ruler();
+          //color("blue") ymove(166) ruler();
           projection() {
                one();
                //two();
                //three();
                //four();
                //five();
+               color("green") alignment_marks(232, 160);
           }
      }
      // Export as 508 mm x 304.8 mm
-     projection() move([508, 304.8-10]) cube(size=[1, 1, 1]);
-     color("purple") ymove(180) ruler();
+     //projection() move([508, 304.8-10]) cube(size=[1, 1, 1]);
+     color("purple") ymove(170) ruler();
 
 } else {
      one();
      two();
      three();
      four();
-     five();
+     //five();
 }
 
 
